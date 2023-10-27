@@ -1,8 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable import/no-extraneous-dependencies */
 import {
-  Input,
-  Kbd,
   Link,
   Navbar as NextUINavbar,
   NavbarBrand,
@@ -17,12 +15,12 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
 
-import { Logo, SearchIcon } from '@/components/icons';
+import { Logo } from '@/components/icons';
 import { ThemeSwitch } from '@/components/theme-switch';
 import { siteConfig } from '@/config/site';
 
 const Navbar = () => {
-  const searchInput = (
+  /* const searchInput = (
     <Input
       aria-label="Pesquisar"
       classNames={{
@@ -41,7 +39,7 @@ const Navbar = () => {
       }
       type="search"
     />
-  );
+  ); */
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
@@ -49,12 +47,10 @@ const Navbar = () => {
         <NavbarBrand as="li" className="max-w-fit gap-1">
           <NextLink className="flex items-center justify-start gap-1" href="/">
             <Logo className="text-primary dark:text-white" />
-            <p className="font-bold text-primary dark:text-white">
-              Bíblia online IPR
-            </p>
+            <p className="text-primary dark:text-white">IPR</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="ml-2 hidden justify-start gap-2 lg:flex">
+        <ul className="ml-2 hidden justify-start gap-2 sm:flex">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -79,7 +75,7 @@ const Navbar = () => {
         <NavbarItem className="hidden gap-2 sm:flex">
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+        {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
       </NavbarContent>
 
       <NavbarContent className="basis-1 pl-1 sm:hidden" justify="end">
@@ -88,7 +84,7 @@ const Navbar = () => {
       </NavbarContent>
 
       <NavbarMenu>
-        {searchInput}
+        {/* {searchInput} */}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {React.Children.toArray(
             siteConfig.navMenuItems.map((item, index) => (

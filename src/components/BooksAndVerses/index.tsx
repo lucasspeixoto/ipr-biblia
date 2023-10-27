@@ -6,12 +6,14 @@
 import { Select, SelectItem, Spinner } from '@nextui-org/react';
 import React from 'react';
 
-import useFetchBooks from '@/queries/book';
+import useFetchBooks from '@/queries/books';
+
+import BookDetail from '../BookDetail';
 
 const BooksAndVerses = () => {
   const { data, isLoading } = useFetchBooks();
 
-  const [selectedBook, setSelectedBook] = React.useState<string>('');
+  const [selectedBook, setSelectedBook] = React.useState<string | null>(null);
 
   /**
    * Recupera o livro selecionado, atualiza o estado e chama os versículos
@@ -21,7 +23,9 @@ const BooksAndVerses = () => {
   const handleSelectionBookChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setSelectedBook(event.target.value);
+    const book = event.target.value;
+
+    setSelectedBook(book);
   };
 
   return (
@@ -45,6 +49,8 @@ const BooksAndVerses = () => {
           </Select>
         )}
       </div>
+
+      <BookDetail selectedBook={selectedBook} />
     </React.Fragment>
   );
 };

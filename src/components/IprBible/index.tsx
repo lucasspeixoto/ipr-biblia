@@ -6,7 +6,7 @@ const IprBible = () => {
   return (
     <>
       {/* Seleção */}
-      <div className="max-h-5/6 h-auto w-full flex-none overflow-y-auto border-2 border-red-600 p-2 md:h-full md:w-80">
+      <div className="max-h-5/6 h-auto w-full flex-none overflow-y-auto p-2 md:h-full md:w-80">
         <BooksAndVerses />
       </div>
 
@@ -16,7 +16,7 @@ const IprBible = () => {
       />
 
       {/* Seleção */}
-      <div className="h-auto w-full grow-0 border-2 border-green-600 p-2 md:h-full md:grow">
+      <div className="h-auto w-full grow-0 p-2 md:h-full md:grow">
         Versículos
       </div>
     </>
