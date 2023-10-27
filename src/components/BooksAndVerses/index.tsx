@@ -27,7 +27,7 @@ const BooksAndVerses = () => {
   return (
     <React.Fragment>
       <div className="flex h-auto w-full items-center justify-center">
-        {isLoading ? (
+        {isLoading || !data ? (
           <Spinner />
         ) : (
           <Select
@@ -37,7 +37,7 @@ const BooksAndVerses = () => {
             className="max-w-xs"
             onChange={handleSelectionBookChange}
           >
-            {data!.map((book) => (
+            {data.map((book) => (
               <SelectItem value={book.abbrev.pt} key={book?.abbrev.pt}>
                 {book.name}
               </SelectItem>
