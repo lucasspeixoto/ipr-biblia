@@ -1,6 +1,7 @@
 import { Divider } from '@nextui-org/react';
 
 import BooksAndVerses from '../BooksAndVerses';
+import ReadableVerses from '../ReadbleVerses';
 
 const IprBible = () => {
   return (
@@ -15,9 +16,9 @@ const IprBible = () => {
         className="border-6 mx-4 hidden h-full md:block"
       />
 
-      {/* Seleção */}
+      {/* Versos */}
       <div className="h-auto w-full grow-0 p-2 md:h-full md:grow">
-        Versículos
+        <ReadableVerses />
       </div>
     </>
   );

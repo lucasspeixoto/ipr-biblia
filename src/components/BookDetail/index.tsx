@@ -1,13 +1,16 @@
 'use client';
 
-/* eslint-disable unused-imports/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { Button, Spinner } from '@nextui-org/react';
-import React from 'react';
+import useFetchBookDetail from '@queries/book-detail';
+import useSelectedBook from '@store/useSelectedBook';
+import React, { useCallback } from 'react';
 
-import useFetchBookDetail from '@/queries/book-detail';
-
+/**
+ * The BookDetailProps type is a TypeScript type for a React component's props that
+ * includes a selectedBook property of type string or null.
+ * @property {string | null} selectedBook - The `selectedBook` property is a string
+ * or null. It represents the currently selected book.
+ */
 type BookDetailProps = {
   selectedBook: string | null;
 };
@@ -15,10 +18,29 @@ type BookDetailProps = {
 const BookDetail: React.FC<BookDetailProps> = ({ selectedBook }) => {
   const { data, isFetching, refetch } = useFetchBookDetail(selectedBook);
 
-  const [selectedVerse, setSelectedVerse] = React.useState(1);
+  const selectedVerseStore = useSelectedBook((state) => state.verse);
 
+  const setSelectedVerse = useSelectedBook((state) => state.setSelectedVerse);
+
+  /* The `const setSelectedVerseHandle` is a callback function that is created
+  using the `useCallback` hook. It takes a `verse` parameter of type number and
+  calls the `setSelectedVerse` function with the `verse` parameter as its
+  argument. */
+  const setSelectedVerseHandle = useCallback((verse: number) => {
+    setSelectedVerse(verse);
+  }, []);
+
+  /* The `React.useEffect` hook is used to perform side effects in a functional
+  component. In this case, it is used to fetch book details when the
+  `selectedBook` prop changes. */
   React.useEffect(() => {
-    if (selectedBook) refetch();
+    let mounted = true;
+
+    if (selectedBook && mounted) refetch();
+
+    return () => {
+      mounted = false;
+    };
   }, [refetch, selectedBook]);
 
   return (
@@ -51,12 +73,13 @@ const BookDetail: React.FC<BookDetailProps> = ({ selectedBook }) => {
                               color="primary"
                               aria-label="Versículo"
                               variant="shadow"
+                              size="sm"
                               className={
-                                chapter === selectedVerse
+                                chapter === selectedVerseStore
                                   ? 'font-bold opacity-100'
                                   : 'opacity-60 hover:font-bold hover:opacity-100'
                               }
-                              onClick={() => setSelectedVerse(chapter)}
+                              onClick={() => setSelectedVerseHandle(chapter)}
                             >
                               {chapter}
                             </Button>

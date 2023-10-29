@@ -1,5 +1,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable import/no-extraneous-dependencies */
+import { Logo } from '@components/icons';
+import { siteConfig } from '@config/site';
 import {
   Link,
   Navbar as NextUINavbar,
@@ -15,9 +17,7 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
 
-import { Logo } from '@/components/icons';
-import { ThemeSwitch } from '@/components/theme-switch';
-import { siteConfig } from '@/config/site';
+import ThemeSwitch from '../ThemeSwitch';
 
 const Navbar = () => {
   /* const searchInput = (

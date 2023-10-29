@@ -2,17 +2,27 @@
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 import axios from 'axios';
 
-// https://www.abibliadigital.com.br/ user Token
-const authorization =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRodSBPY3QgMjYgMjAyMyAwOTozODo1MCBHTVQrMDAwMC5sc3BlaXhvdG9kZXZAZ21haWwuY29tIiwiaWF0IjoxNjk4MzEzMTMwfQ.yVNHaTzpU8DQlbZkWBvSr-PMdBUlXk5CLWxicYVSFiM';
-
-// Axios instance
+/* The code `const axiosInstance = axios.create({ ... })` creates an instance of
+the Axios library with custom configuration options. */
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BIBLE_API_URL,
-  headers: { Authorization: authorization },
+  headers: {
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_BIBLE_API_TOKEN}`,
+  },
 });
 
-// Api http request methods with generics request
+/**
+ * The `api` function returns an object with methods for making HTTP requests using
+ * Axios.
+ * @param {AxiosInstance} _axios - The `_axios` parameter is an instance of the
+ * Axios library. Axios is a popular JavaScript library used for making HTTP
+ * requests from a browser or Node.js. It provides a simple and elegant API for
+ * handling asynchronous HTTP requests.
+ * @returns The `api` function returns an object with four methods: `get`, `put`,
+ * `post`, and `delete`. Each method makes an HTTP request using the provided Axios
+ * instance (`_axios`). The methods return a Promise that resolves to the response
+ * data.
+ */
 const api = (_axios: AxiosInstance) => {
   return {
     get<T>(url: string, config: AxiosRequestConfig = {}) {

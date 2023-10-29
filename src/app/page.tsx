@@ -1,11 +1,9 @@
-import IprBible from '@/components/IprBible';
+import IprBible from '@components/IprBible';
 
 export default function Home() {
   return (
-    <div className="h-full">
-      <div className="flex h-full flex-col items-start gap-0.5 md:flex-row">
-        <IprBible />
-      </div>
+    <div className="flex h-full flex-col items-start gap-0.5 md:flex-row">
+      <IprBible />
     </div>
   );
 }

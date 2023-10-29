@@ -4,16 +4,32 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Select, SelectItem, Spinner } from '@nextui-org/react';
+import useFetchBooks from '@queries/books';
+import useSelectedBook from '@store/useSelectedBook';
 import React from 'react';
 
-import useFetchBooks from '@/queries/books';
-
 import BookDetail from '../BookDetail';
+
+const FIRST_SELECTED_VERSE = 1;
 
 const BooksAndVerses = () => {
   const { data, isLoading } = useFetchBooks();
 
-  const [selectedBook, setSelectedBook] = React.useState<string | null>(null);
+  const selectedBookAbbrev = useSelectedBook((state) => state.bookAbbrev);
+
+  const setSelectedBookAbbrev = useSelectedBook(
+    (state) => state.setSelectedBookAbbrev,
+  );
+
+  const setSelectedVerse = useSelectedBook((state) => state.setSelectedVerse);
+
+  const setSelectedBookAbbrevHandle = React.useCallback(
+    (bookAbbrev: string) => {
+      setSelectedBookAbbrev(bookAbbrev);
+      setSelectedVerse(FIRST_SELECTED_VERSE);
+    },
+    [],
+  );
 
   /**
    * Recupera o livro selecionado, atualiza o estado e chama os versículos
@@ -23,9 +39,9 @@ const BooksAndVerses = () => {
   const handleSelectionBookChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    const book = event.target.value;
+    const bookAbbrev = event.target.value;
 
-    setSelectedBook(book);
+    setSelectedBookAbbrevHandle(bookAbbrev);
   };
 
   return (
@@ -50,7 +66,7 @@ const BooksAndVerses = () => {
         )}
       </div>
 
-      <BookDetail selectedBook={selectedBook} />
+      <BookDetail selectedBook={selectedBookAbbrev} />
     </React.Fragment>
   );
 };
