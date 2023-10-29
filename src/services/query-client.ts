@@ -11,5 +11,3 @@ export const queryClient = new QueryClient({
     },
   },
 });
-
-// const getQueryClient = cache(() => new QueryClient());

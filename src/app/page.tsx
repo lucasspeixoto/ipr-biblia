@@ -1,4 +1,4 @@
-import IprBible from '@components/IprBible';
+import IprBible from '@/components/IprBible';
 
 export default function Home() {
   return (

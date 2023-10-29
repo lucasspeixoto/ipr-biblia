@@ -4,9 +4,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Select, SelectItem, Spinner } from '@nextui-org/react';
-import useFetchBooks from '@queries/books';
-import useSelectedBook from '@store/useSelectedBook';
 import React from 'react';
+
+import useFetchBooks from '@/queries/books';
+import useSelectedBook from '@/store/useSelectedBook';
 
 import BookDetail from '../BookDetail';
 

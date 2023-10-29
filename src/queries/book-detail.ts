@@ -1,7 +1,7 @@
-import api from '@services/api';
 import type { QueryFunctionContext } from '@tanstack/react-query';
 import { useQuery } from '@tanstack/react-query';
 
+import api from '@/services/api';
 import type { Book } from '@/types/book';
 
 /**

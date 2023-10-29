@@ -1,7 +1,5 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable import/no-extraneous-dependencies */
-import { Logo } from '@components/icons';
-import { siteConfig } from '@config/site';
 import {
   Link,
   Navbar as NextUINavbar,
@@ -16,6 +14,9 @@ import { link as linkStyles } from '@nextui-org/theme';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
+
+import { Logo } from '@/components/icons';
+import { siteConfig } from '@/config/site';
 
 import ThemeSwitch from '../ThemeSwitch';
 

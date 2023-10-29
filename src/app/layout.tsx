@@ -1,13 +1,14 @@
 import '@/styles/globals.css';
 
-import Navbar from '@components/Navbar';
-import { fontSans } from '@config/fonts';
-import { siteConfig } from '@config/site';
 import { Link } from '@nextui-org/react';
-import { NextUIProviders } from '@providers/next-ui';
-import ReactQueryProviders from '@providers/react-query';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
+
+import Navbar from '@/components/Navbar';
+import { fontSans } from '@/config/fonts';
+import { siteConfig } from '@/config/site';
+import { NextUIProviders } from '@/providers/next-ui';
+import ReactQueryProviders from '@/providers/react-query';
 
 export const metadata: Metadata = {
   title: {

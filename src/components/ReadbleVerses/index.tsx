@@ -1,7 +1,8 @@
 'use client';
 
-import useSelectedBook from '@store/useSelectedBook';
 import React from 'react';
+
+import useSelectedBook from '@/store/useSelectedBook';
 
 const ReadableVerses: React.FC = () => {
   const selectedVerseStore = useSelectedBook((state) => state.verse);

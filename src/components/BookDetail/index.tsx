@@ -1,9 +1,10 @@
 'use client';
 
 import { Button, Spinner } from '@nextui-org/react';
-import useFetchBookDetail from '@queries/book-detail';
-import useSelectedBook from '@store/useSelectedBook';
 import React, { useCallback } from 'react';
+
+import useFetchBookDetail from '@/queries/book-detail';
+import useSelectedBook from '@/store/useSelectedBook';
 
 /**
  * The BookDetailProps type is a TypeScript type for a React component's props that
