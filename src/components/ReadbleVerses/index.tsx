@@ -19,8 +19,18 @@ const ReadableVerses: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-2">
-      <div>Selected Book Abbrev.: {selectedBookAbbrev}</div>
-      <div>Selected Verse: {selectedVerseStore}</div>
+      <div>
+        Selected Book Abbrev:{' '}
+        <span className="font-semibold text-cyan-700">
+          {selectedBookAbbrev}
+        </span>
+      </div>
+      <div>
+        Selected Verse:{' '}
+        <span className="font-semibold text-cyan-700">
+          {selectedVerseStore}
+        </span>
+      </div>
     </div>
   );
 };

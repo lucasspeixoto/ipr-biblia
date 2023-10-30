@@ -16,8 +16,12 @@ export interface ThemeSwitchProps {
 
 const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => {
   const { theme, setTheme } = useTheme();
+
   const isSSR = useIsSSR();
 
+  /**
+   * The above function toggles between a light and dark theme.
+   */
   const onChange = () => {
     if (theme === 'light') {
       setTheme('dark');

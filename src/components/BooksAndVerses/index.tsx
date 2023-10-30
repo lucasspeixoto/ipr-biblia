@@ -1,17 +1,13 @@
 'use client';
 
-/* eslint-disable unused-imports/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { Select, SelectItem, Spinner } from '@nextui-org/react';
 import React from 'react';
 
+import { FIRST_SELECTED_VERSE } from '@/config/constants';
 import useFetchBooks from '@/queries/books';
 import useSelectedBook from '@/store/useSelectedBook';
 
 import BookDetail from '../BookDetail';
-
-const FIRST_SELECTED_VERSE = 1;
 
 const BooksAndVerses = () => {
   const { data, isLoading } = useFetchBooks();
@@ -24,6 +20,9 @@ const BooksAndVerses = () => {
 
   const setSelectedVerse = useSelectedBook((state) => state.setSelectedVerse);
 
+  /* The `setSelectedBookAbbrevHandle` is a callback function created using the
+  `React.useCallback` hook. It is used to set the selected book abbreviation and
+  selected verse in the state. */
   const setSelectedBookAbbrevHandle = React.useCallback(
     (bookAbbrev: string) => {
       setSelectedBookAbbrev(bookAbbrev);
