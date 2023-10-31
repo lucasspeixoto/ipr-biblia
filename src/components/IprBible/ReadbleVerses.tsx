@@ -1,10 +1,11 @@
 'use client';
 
-import { Spinner } from '@nextui-org/react';
 import React from 'react';
 
 import useFetchVersesByBook from '@/queries/verses';
 import useSelectedBook from '@/store/useSelectedBook';
+
+import LoadingPage from '../LoadingPage';
 
 const ReadableVerses: React.FC = () => {
   const selectedBookAbbrev = useSelectedBook((state) => state.bookAbbrev);
@@ -35,7 +36,7 @@ const ReadableVerses: React.FC = () => {
     };
   }, [refetch, selectedBookAbbrev, selectedVerseStore]);
 
-  if (isFetching) return <Spinner />;
+  if (isFetching) return <LoadingPage />;
 
   return (
     <>

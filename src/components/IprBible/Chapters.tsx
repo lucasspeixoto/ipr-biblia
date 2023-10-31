@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Spinner } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import React, { useCallback } from 'react';
 
 import useFetchBookDetail from '@/queries/book-detail';
@@ -44,9 +44,7 @@ const Chapters: React.FC = () => {
         <span className="">
           <>
             {isFetching ? (
-              <div className="flex w-full items-center justify-center">
-                <Spinner />
-              </div>
+              <></>
             ) : (
               <div className="flex w-full items-center justify-start">
                 {data ? (

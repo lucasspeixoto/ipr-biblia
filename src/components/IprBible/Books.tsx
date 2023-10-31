@@ -1,11 +1,13 @@
 'use client';
 
-import { Select, SelectItem, Spinner } from '@nextui-org/react';
+import { Select, SelectItem } from '@nextui-org/react';
 import React from 'react';
 
 import { FIRST_SELECTED_VERSE } from '@/config/constants';
 import useFetchBooks from '@/queries/books';
 import useSelectedBook from '@/store/useSelectedBook';
+
+import LoadingPage from '../LoadingPage';
 
 const Books: React.FC = () => {
   const { data, isLoading } = useFetchBooks();
@@ -44,7 +46,7 @@ const Books: React.FC = () => {
     <React.Fragment>
       <div className="flex h-auto w-full items-center justify-center">
         {isLoading || !data ? (
-          <Spinner />
+          <LoadingPage />
         ) : (
           <Select
             label="Livro"
