@@ -44,7 +44,7 @@ const Books: React.FC = () => {
 
   return (
     <React.Fragment>
-      <div className="flex h-auto w-full items-center justify-center">
+      <div className="flex w-full items-center justify-center">
         {isLoading || !data ? (
           <LoadingPage />
         ) : (

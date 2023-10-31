@@ -40,7 +40,7 @@ const Chapters: React.FC = () => {
 
   return (
     <React.Fragment>
-      <div className="h-auto w-full  py-4 pl-2">
+      <div className="w-full py-4 pl-2">
         <span className="">
           <>
             {isFetching ? (
@@ -55,7 +55,7 @@ const Chapters: React.FC = () => {
                       Capítulos
                     </span>
                     <div className="ml-2 mt-2">
-                      <div className="w-xs overflow-y-scrool flex flex-wrap gap-2">
+                      <div className="w-xs overflow-y-scrool flex flex-wrap items-center justify-center gap-2">
                         {React.Children.toArray(
                           Array.from(
                             { length: data.chapters - 0 },
