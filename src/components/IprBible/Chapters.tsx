@@ -89,7 +89,7 @@ const Chapters: React.FC = () => {
       </div>
       <Link
         isExternal
-        className="ml-4 mt-8 flex items-center gap-1 text-current"
+        className="mt-4 flex items-center justify-center gap-1 text-current"
         href="https://www.igrejapentecostalreformada.com.br/"
         title="link site ipr"
       >
