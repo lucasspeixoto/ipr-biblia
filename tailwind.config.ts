@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import { nextui } from '@nextui-org/theme';
 import type { Config } from 'tailwindcss';
 
@@ -12,6 +13,6 @@ const config: Config = {
     extend: {},
   },
   darkMode: 'class',
-  plugins: [nextui()],
+  plugins: [nextui(), require('tailwind-scrollbar-hide')],
 };
 export default config;

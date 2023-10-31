@@ -45,6 +45,17 @@ const ReadableVerses: React.FC = () => {
           <span className="text-3xl font-bold">
             {data?.book.name} {selectedVerseStore}
           </span>
+
+          <div className="mx-4 mt-6 flex flex-col items-center justify-center gap-4">
+            {data?.verses.map((verse) => (
+              <p className="text-center" key={verse.number}>
+                <span className="mr-2 font-bold italic text-primary">
+                  {verse.number}.
+                </span>
+                {verse.text}
+              </p>
+            ))}
+          </div>
         </div>
       ) : null}
     </>

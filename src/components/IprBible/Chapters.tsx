@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@nextui-org/react';
+import { Button, Link } from '@nextui-org/react';
 import React, { useCallback } from 'react';
 
 import useFetchBookDetail from '@/queries/book-detail';
@@ -87,6 +87,15 @@ const Chapters: React.FC = () => {
           </>
         </span>
       </div>
+      <Link
+        isExternal
+        className="ml-4 mt-8 flex items-center gap-1 text-current"
+        href="https://www.igrejapentecostalreformada.com.br/"
+        title="link site ipr"
+      >
+        <span className="text-default-600">Conheça mais sobre a </span>
+        <p className="text-primary">IPR</p>
+      </Link>
     </React.Fragment>
   );
 };

@@ -1,6 +1,5 @@
 import '@/styles/globals.css';
 
-import { Link } from '@nextui-org/react';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 
@@ -35,7 +34,7 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen overflow-auto bg-background font-sans antialiased scrollbar-hide',
           fontSans.variable,
         )}
       >
@@ -43,25 +42,12 @@ export default function RootLayout({
           <NextUIProviders
             themeProps={{ attribute: 'class', defaultTheme: 'dark' }}
           >
-            <div className="relative flex h-screen flex-col">
+            <div className="relative flex flex-col">
               <Navbar />
 
               <main className="container mx-auto h-full max-w-7xl grow px-7 py-2">
                 {children}
               </main>
-              <footer className="flex w-full items-center justify-center py-3">
-                <Link
-                  isExternal
-                  className="flex items-center gap-1 text-current"
-                  href="https://www.igrejapentecostalreformada.com.br/"
-                  title="link site ipr"
-                >
-                  <span className="text-default-600">
-                    Conheça mais sobre a{' '}
-                  </span>
-                  <p className="text-primary">IPR</p>
-                </Link>
-              </footer>
             </div>
           </NextUIProviders>
         </ReactQueryProviders>
