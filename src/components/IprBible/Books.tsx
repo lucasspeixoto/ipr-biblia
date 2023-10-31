@@ -7,12 +7,8 @@ import { FIRST_SELECTED_VERSE } from '@/config/constants';
 import useFetchBooks from '@/queries/books';
 import useSelectedBook from '@/store/useSelectedBook';
 
-import BookDetail from '../BookDetail';
-
-const BooksAndVerses = () => {
+const Books: React.FC = () => {
   const { data, isLoading } = useFetchBooks();
-
-  const selectedBookAbbrev = useSelectedBook((state) => state.bookAbbrev);
 
   const setSelectedBookAbbrev = useSelectedBook(
     (state) => state.setSelectedBookAbbrev,
@@ -65,10 +61,8 @@ const BooksAndVerses = () => {
           </Select>
         )}
       </div>
-
-      <BookDetail selectedBook={selectedBookAbbrev} />
     </React.Fragment>
   );
 };
 
-export default BooksAndVerses;
+export default Books;

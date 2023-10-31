@@ -1,14 +1,16 @@
 import { Divider } from '@nextui-org/react';
 
-import BooksAndVerses from '../BooksAndVerses';
-import ReadableVerses from '../ReadbleVerses';
+import Books from './Books';
+import Chapters from './Chapters';
+import ReadableVerses from './ReadbleVerses';
 
-const IprBible = () => {
+const IprBible: React.FC = () => {
   return (
     <>
-      {/* Seleção */}
+      {/* Listagem de Livros e capítulos do livro selecionado */}
       <div className="max-h-5/6 h-auto w-full flex-none overflow-y-auto p-2 md:h-full md:w-80">
-        <BooksAndVerses />
+        <Books />
+        <Chapters />
       </div>
 
       <Divider

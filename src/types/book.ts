@@ -1,13 +1,11 @@
-export type BookAbbrev = {
-  pt: string;
-  en: string;
-};
+import type { BookAbbrev } from './book-abbrev';
 
 export type Book = {
   abbrev: BookAbbrev;
+  name: string;
   author: string;
   chapters: 50;
   group: string;
-  name: string;
-  testament: string;
+  testament?: string;
+  version?: string;
 };

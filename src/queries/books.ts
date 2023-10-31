@@ -10,7 +10,7 @@ import type { Book } from '@/types/book';
  * array of `Book` objects.
  */
 const getBooks = async (): Promise<Book[]> => {
-  const { data } = await api.get<Book[]>('/books');
+  const { data } = await api.get<Book[]>('/api/books');
 
   return data;
 };

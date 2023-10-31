@@ -6,20 +6,14 @@ import React, { useCallback } from 'react';
 import useFetchBookDetail from '@/queries/book-detail';
 import useSelectedBook from '@/store/useSelectedBook';
 
-/**
- * The BookDetailProps type is a TypeScript type for a React component's props that
- * includes a selectedBook property of type string or null.
- * @property {string | null} selectedBook - The `selectedBook` property is a string
- * or null. It represents the currently selected book.
- */
-type BookDetailProps = {
-  selectedBook: string | null;
-};
-
-const BookDetail: React.FC<BookDetailProps> = ({ selectedBook }) => {
-  const { data, isFetching, refetch } = useFetchBookDetail(selectedBook);
-
+const Chapters: React.FC = () => {
   const selectedVerseStore = useSelectedBook((state) => state.verse);
+
+  const selectedBookAbbrevStore = useSelectedBook((state) => state.bookAbbrev);
+
+  const { data, isFetching, refetch } = useFetchBookDetail(
+    selectedBookAbbrevStore,
+  );
 
   const setSelectedVerse = useSelectedBook((state) => state.setSelectedVerse);
 
@@ -37,12 +31,12 @@ const BookDetail: React.FC<BookDetailProps> = ({ selectedBook }) => {
   React.useEffect(() => {
     let mounted = true;
 
-    if (selectedBook && mounted) refetch();
+    if (selectedBookAbbrevStore && mounted) refetch();
 
     return () => {
       mounted = false;
     };
-  }, [refetch, selectedBook]);
+  }, [refetch, selectedBookAbbrevStore]);
 
   return (
     <React.Fragment>
@@ -60,7 +54,7 @@ const BookDetail: React.FC<BookDetailProps> = ({ selectedBook }) => {
                     <span className="">{data.name}</span>
                     <span className="">Autor(es): {data.author}</span>
                     <span className="ml-2 mt-4 text-xl font-bold">
-                      Versículos
+                      Capítulos
                     </span>
                     <div className="ml-2 mt-2">
                       <div className="w-xs overflow-y-scrool flex flex-wrap gap-2">
@@ -99,4 +93,4 @@ const BookDetail: React.FC<BookDetailProps> = ({ selectedBook }) => {
   );
 };
 
-export default BookDetail;
+export default Chapters;

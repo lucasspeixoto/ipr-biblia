@@ -2,6 +2,8 @@ export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
   name: 'Bíblia e Temáticas IPR',
+  rootName: 'Bíblia Online',
+  tematicasName: 'Temáticas IPR',
   description:
     'Aplicatico online da Bíblia com as temáticas da Igreja pentecostal reformada.',
   navItems: [
