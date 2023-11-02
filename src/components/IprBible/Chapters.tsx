@@ -21,6 +21,10 @@ const Chapters: React.FC = () => {
 
   const setSelectedVerse = useSelectedBook((state) => state.setSelectedVerse);
 
+  const setChaptersNumbers = useSelectedBook(
+    (state) => state.setChaptersNumber,
+  );
+
   /* The `const setSelectedVerseHandle` is a callback function that is created
   using the `useCallback` hook. It takes a `verse` parameter of type number and
   calls the `setSelectedVerse` function with the `verse` parameter as its
@@ -29,83 +33,97 @@ const Chapters: React.FC = () => {
     setSelectedVerse(verse);
   }, []);
 
+  const setChaptersNumberHandle = useCallback((chapters: number) => {
+    setChaptersNumbers(chapters);
+  }, []);
+
   /* The `React.useEffect` hook is used to perform side effects in a functional
   component. In this case, it is used to fetch book details when the
   `selectedBook` prop changes. */
   React.useEffect(() => {
     let mounted = true;
 
-    if (selectedBookAbbrevStore && mounted) refetch();
+    if (selectedBookAbbrevStore && mounted) {
+      refetch();
+
+      setChaptersNumberHandle(data?.chapters!);
+    }
 
     return () => {
       mounted = false;
     };
   }, [refetch, selectedBookAbbrevStore]);
 
+  React.useEffect(() => {
+    let mounted = true;
+
+    if (data && mounted) {
+      setChaptersNumberHandle(data?.chapters!);
+    }
+
+    return () => {
+      mounted = false;
+    };
+  }, [data]);
+
   return (
     <React.Fragment>
       <div className="w-full py-4 pl-2">
-        <span className="">
-          <>
-            {isFetching ? (
-              <></>
-            ) : (
-              <div className="flex w-full items-center justify-start">
-                {data ? (
-                  <div className="flex flex-col justify-between gap-1">
-                    <div className="flex w-full gap-2">
-                      Livro:{' '}
-                      <span className="font-semibold text-primary">
-                        {data.name}
-                      </span>
-                    </div>
-                    <div className="flex w-full gap-2">
-                      Autor(es):{' '}
-                      <span className="font-semibold text-primary">
-                        {data.author}
-                      </span>
-                    </div>
-                    <div className="flex w-full gap-2">
-                      Versão:{' '}
-                      <span className="font-semibold text-primary">
-                        {versions[selectedVersionStore!]}
-                      </span>
-                    </div>
-                    <span className="ml-2 mt-4 text-xl font-bold">
-                      Capítulos
+        <>
+          {isFetching ? null : (
+            <div className="flex w-full items-center justify-start">
+              {data ? (
+                <div className="flex flex-col justify-between gap-1">
+                  <div className="flex w-full gap-2">
+                    Livro:{' '}
+                    <span className="font-semibold text-primary">
+                      {data.name}
                     </span>
-                    <div className="ml-2 mt-2">
-                      <div className="w-xs overflow-y-scrool flex flex-wrap items-center justify-center gap-2">
-                        {React.Children.toArray(
-                          Array.from(
-                            { length: data.chapters - 0 },
-                            (_, index) => index + 1,
-                          ).map((chapter) => (
-                            <Button
-                              isIconOnly
-                              color="primary"
-                              aria-label="Versículo"
-                              variant="shadow"
-                              size="sm"
-                              className={
-                                chapter === selectedVerseStore
-                                  ? 'font-bold opacity-100'
-                                  : 'opacity-60 hover:font-bold hover:opacity-100'
-                              }
-                              onClick={() => setSelectedVerseHandle(chapter)}
-                            >
-                              {chapter}
-                            </Button>
-                          )),
-                        )}
-                      </div>
+                  </div>
+                  <div className="flex w-full gap-2">
+                    Autor(es):{' '}
+                    <span className="font-semibold text-primary">
+                      {data.author}
+                    </span>
+                  </div>
+                  <div className="flex w-full gap-2">
+                    Versão:{' '}
+                    <span className="font-semibold text-primary">
+                      {versions[selectedVersionStore!]}
+                    </span>
+                  </div>
+                  <span className="ml-2 mt-4 text-xl font-bold">Capítulos</span>
+                  <div className="ml-2 mt-2">
+                    <div className="w-xs overflow-y-scrool flex flex-wrap items-center justify-center gap-2">
+                      {React.Children.toArray(
+                        Array.from(
+                          { length: data.chapters },
+                          (_, index) => index + 1,
+                        ).map((chapter) => (
+                          <Button
+                            isIconOnly
+                            color="primary"
+                            aria-label="Versículo"
+                            variant="shadow"
+                            size="sm"
+                            className={
+                              chapter === selectedVerseStore
+                                ? 'font-bold opacity-100'
+                                : 'opacity-60 hover:font-bold hover:opacity-100'
+                            }
+                            onClick={() => setSelectedVerseHandle(chapter)}
+                          >
+                            {chapter}
+                          </Button>
+                        )),
+                      )}
                     </div>
                   </div>
-                ) : null}
-              </div>
-            )}
-          </>
-        </span>
+                </div>
+              ) : null}
+            </div>
+          )}
+        </>
       </div>
       <Link
         isExternal

@@ -3,6 +3,7 @@ import { Divider } from '@nextui-org/react';
 import Books from './Books';
 import Chapters from './Chapters';
 import ReadableVerses from './ReadbleVerses';
+import Versions from './Versions';
 
 const IprBible: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const IprBible: React.FC = () => {
 
       {/* Versos */}
       <div className="w-full grow-0 overflow-y-auto p-2 md:h-screen md:grow">
+        <Versions />
         <ReadableVerses />
       </div>
     </>

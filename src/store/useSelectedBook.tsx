@@ -21,6 +21,8 @@ type SelectedBookStore = {
   setSelectedBookAbbrev: (bookAbbrev: string) => void;
   verse: number | null;
   setSelectedVerse: (verse: number) => void;
+  chapters: number;
+  setChaptersNumber: (chapters: number) => void;
 };
 
 /* The code is creating a custom hook called `useSelectedBook` using the Zustand
@@ -41,6 +43,13 @@ const useSelectedBook = create(
         set((state) => ({
           ...state,
           verse,
+        }));
+      },
+      chapters: 1,
+      setChaptersNumber: (chapters: number) => {
+        set((state) => ({
+          ...state,
+          chapters,
         }));
       },
     }),
