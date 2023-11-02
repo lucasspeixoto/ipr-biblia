@@ -29,14 +29,14 @@ API to manage state in a functional way. */
 const useSelectedBook = create(
   persist<SelectedBookStore>(
     (set) => ({
-      bookAbbrev: null,
+      bookAbbrev: 'gn',
       setSelectedBookAbbrev: (bookAbbrev: string) => {
         set((state) => ({
           ...state,
           bookAbbrev,
         }));
       },
-      verse: null,
+      verse: 1,
       setSelectedVerse: (verse: number) => {
         set((state) => ({
           ...state,

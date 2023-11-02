@@ -5,11 +5,15 @@ import React, { useCallback } from 'react';
 
 import useFetchBookDetail from '@/queries/book-detail';
 import useSelectedBook from '@/store/useSelectedBook';
+import useSelectedVersion from '@/store/useSelectedVersion';
+import { versions } from '@/utils/versions';
 
 const Chapters: React.FC = () => {
   const selectedVerseStore = useSelectedBook((state) => state.verse);
 
   const selectedBookAbbrevStore = useSelectedBook((state) => state.bookAbbrev);
+
+  const selectedVersionStore = useSelectedVersion((state) => state.version);
 
   const { data, isFetching, refetch } = useFetchBookDetail(
     selectedBookAbbrevStore,
@@ -49,8 +53,24 @@ const Chapters: React.FC = () => {
               <div className="flex w-full items-center justify-start">
                 {data ? (
                   <div className="flex flex-col justify-between gap-1">
-                    <span className="">{data.name}</span>
-                    <span className="">Autor(es): {data.author}</span>
+                    <div className="flex w-full gap-2">
+                      Livro:{' '}
+                      <span className="font-semibold text-primary">
+                        {data.name}
+                      </span>
+                    </div>
+                    <div className="flex w-full gap-2">
+                      Autor(es):{' '}
+                      <span className="font-semibold text-primary">
+                        {data.author}
+                      </span>
+                    </div>
+                    <div className="flex w-full gap-2">
+                      Versão:{' '}
+                      <span className="font-semibold text-primary">
+                        {versions[selectedVersionStore!]}
+                      </span>
+                    </div>
                     <span className="ml-2 mt-4 text-xl font-bold">
                       Capítulos
                     </span>

@@ -15,10 +15,10 @@ import type { VerseByBookResponse } from '@/types/verse-by-book-response';
 const getVersesByBook = async (
   ctx: QueryFunctionContext,
 ): Promise<VerseByBookResponse> => {
-  const [, bookAbbrev, verse] = ctx.queryKey;
+  const [, version, bookAbbrev, verse] = ctx.queryKey;
 
   const { data } = await api.get<VerseByBookResponse>(
-    `/api/verses/acf/${bookAbbrev}/${verse}`,
+    `/api/verses/${version}/${bookAbbrev}/${verse}`,
   );
 
   return data;
@@ -35,11 +35,12 @@ const getVersesByBook = async (
  * @returns the result of the `useQuery` hook.
  */
 export default function useFetchVersesByBook(
+  version: string | null,
   bookAbbrev: string | null,
   verse: number | null,
 ) {
   return useQuery({
-    queryKey: ['api/verses/acf', bookAbbrev, verse],
+    queryKey: ['api/verses', version, bookAbbrev, verse],
     queryFn: getVersesByBook,
     enabled: false,
   });
