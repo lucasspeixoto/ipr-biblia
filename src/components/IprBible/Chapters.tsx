@@ -72,7 +72,7 @@ const Chapters: React.FC = () => {
         {isFetching ? null : (
           <div className="flex w-full items-center justify-start">
             {data ? (
-              <div className="flex h-auto flex-col justify-between gap-1 py-2">
+              <div className="flex h-5/6 flex-col justify-between gap-1 py-2">
                 <div className="flex w-full gap-2">
                   Livro:{' '}
                   <span className="font-semibold text-primary">
@@ -92,8 +92,8 @@ const Chapters: React.FC = () => {
                   </span>
                 </div>
                 <span className="mt-4 text-xl font-bold">Capítulos</span>
-                <div className="z-10 my-2 max-h-80">
-                  <div className="w-xs mb-2 flex max-h-80 flex-wrap items-center justify-center gap-2 overflow-auto py-4">
+                <div className="z-10 my-2 max-h-96">
+                  <div className="w-xs mb-2 flex max-h-96 flex-wrap items-center justify-center gap-2 overflow-auto py-4">
                     {React.Children.toArray(
                       Array.from(
                         { length: data.chapters },

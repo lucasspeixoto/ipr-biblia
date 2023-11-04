@@ -79,7 +79,7 @@ const ReadableVerses: React.FC = () => {
               ))}
             </div>
 
-            <div className="my-10 flex w-full items-center justify-center gap-8">
+            <div className="my-10 flex w-full items-center justify-center gap-8 overflow-hidden">
               <Pagination
                 loop
                 showControls
