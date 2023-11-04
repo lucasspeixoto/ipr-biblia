@@ -11,6 +11,7 @@ const IprBible: React.FC = () => {
       {/* Listagem de Livros e capítulos do livro selecionado */}
       <div className="w-full grow-0 overflow-y-auto p-2 md:h-screen md:w-96 md:grow">
         <Books />
+
         <Chapters />
       </div>
 
@@ -22,6 +23,7 @@ const IprBible: React.FC = () => {
       {/* Versos */}
       <div className="w-full grow-0 overflow-y-auto p-2 md:h-screen md:grow">
         <Versions />
+
         <ReadableVerses />
       </div>
     </>

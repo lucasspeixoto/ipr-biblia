@@ -64,7 +64,7 @@ const ReadableVerses: React.FC = () => {
       {isClient ? (
         <>
           <div className="flex flex-col">
-            <span id="startReadingPosition" className="text-3xl font-bold">
+            <span className="text-3xl font-bold">
               {data?.book.name} {selectedVerseStore}
             </span>
 

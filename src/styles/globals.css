@@ -30,3 +30,9 @@
     background-color: #0070F0;
     
 }
+
+.fixedElement {
+    position: absolute;
+    top: 0;
+    right:0;
+}

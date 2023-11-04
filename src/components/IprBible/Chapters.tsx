@@ -67,74 +67,73 @@ const Chapters: React.FC = () => {
   }, [data]);
 
   return (
-    <React.Fragment>
-      <div className="w-full py-4 pl-2">
-        <>
-          {isFetching ? null : (
-            <div className="flex w-full items-center justify-start">
-              {data ? (
-                <div className="flex flex-col justify-between gap-1">
-                  <div className="flex w-full gap-2">
-                    Livro:{' '}
-                    <span className="font-semibold text-primary">
-                      {data.name}
-                    </span>
-                  </div>
-                  <div className="flex w-full gap-2">
-                    Autor(es):{' '}
-                    <span className="font-semibold text-primary">
-                      {data.author}
-                    </span>
-                  </div>
-                  <div className="flex w-full gap-2">
-                    Versão:{' '}
-                    <span className="font-semibold text-primary">
-                      {versions[selectedVersionStore!]}
-                    </span>
-                  </div>
-                  <span className="ml-2 mt-4 text-xl font-bold">Capítulos</span>
-                  <div className="ml-2 mt-2">
-                    <div className="w-xs overflow-y-scrool flex flex-wrap items-center justify-center gap-2">
-                      {React.Children.toArray(
-                        Array.from(
-                          { length: data.chapters },
-                          (_, index) => index + 1,
-                        ).map((chapter) => (
-                          <Button
-                            isIconOnly
-                            color="primary"
-                            aria-label="Versículo"
-                            variant="shadow"
-                            size="sm"
-                            className={
-                              chapter === selectedVerseStore
-                                ? 'font-bold opacity-100'
-                                : 'opacity-60 hover:font-bold hover:opacity-100'
-                            }
-                            onClick={() => setSelectedVerseHandle(chapter)}
-                          >
-                            {chapter}
-                          </Button>
-                        )),
-                      )}
-                    </div>
+    <div className="flex h-5/6 flex-col justify-between gap-2 ">
+      <div className="w-full px-1 py-2">
+        {isFetching ? null : (
+          <div className="flex w-full items-center justify-start">
+            {data ? (
+              <div className="flex h-auto flex-col justify-between gap-1 py-2">
+                <div className="flex w-full gap-2">
+                  Livro:{' '}
+                  <span className="font-semibold text-primary">
+                    {data.name}
+                  </span>
+                </div>
+                <div className="flex w-full gap-2">
+                  Autor(es):{' '}
+                  <span className="font-semibold text-primary">
+                    {data.author}
+                  </span>
+                </div>
+                <div className="flex w-full gap-2">
+                  Versão:{' '}
+                  <span className="font-semibold text-primary">
+                    {versions[selectedVersionStore!]}
+                  </span>
+                </div>
+                <span className="mt-4 text-xl font-bold">Capítulos</span>
+                <div className="z-10 my-2 max-h-80">
+                  <div className="w-xs mb-2 flex max-h-80 flex-wrap items-center justify-center gap-2 overflow-auto py-4">
+                    {React.Children.toArray(
+                      Array.from(
+                        { length: data.chapters },
+                        (_, index) => index + 1,
+                      ).map((chapter) => (
+                        <Button
+                          isIconOnly
+                          color="primary"
+                          aria-label="Versículo"
+                          variant="shadow"
+                          size="sm"
+                          className={
+                            chapter === selectedVerseStore
+                              ? 'font-bold opacity-100'
+                              : 'opacity-60 hover:font-bold hover:opacity-100'
+                          }
+                          onClick={() => setSelectedVerseHandle(chapter)}
+                        >
+                          {chapter}
+                        </Button>
+                      )),
+                    )}
                   </div>
                 </div>
-              ) : null}
-            </div>
-          )}
-        </>
+              </div>
+            ) : null}
+          </div>
+        )}
       </div>
+
       <Link
         isExternal
-        className="mt-4 flex items-center justify-center gap-1 text-current"
+        className="mb-1 flex items-center justify-center gap-1 text-current"
         href="https://www.igrejapentecostalreformada.com.br/"
         title="link site ipr"
       >
         <span className="text-default-600">Conheça mais sobre a </span>
         <p className="text-primary">IPR</p>
       </Link>
-    </React.Fragment>
+    </div>
   );
 };
 
