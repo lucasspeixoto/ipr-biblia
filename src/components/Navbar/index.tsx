@@ -12,10 +12,10 @@ import {
 } from '@nextui-org/react';
 import { link as linkStyles } from '@nextui-org/theme';
 import clsx from 'clsx';
+import Image from 'next/image';
 import NextLink from 'next/link';
 import React from 'react';
 
-import { Logo } from '@/components/icons';
 import { siteConfig } from '@/config/site';
 
 import ThemeSwitch from '../ThemeSwitch';
@@ -25,9 +25,11 @@ const Navbar = () => {
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="max-w-fit gap-1">
-          <NextLink className="flex items-center justify-start gap-1" href="/">
-            <Logo className="text-primary dark:text-white" />
-            <p className="text-primary dark:text-white">IPR</p>
+          <NextLink className="flex items-center justify-start gap-2" href="/">
+            <Image src="/biblia.png" alt="Em breve" width={28} height={28} />
+            <p className="mt-2 font-semibold italic text-primary dark:text-white">
+              IPR
+            </p>
           </NextLink>
         </NavbarBrand>
         <ul className="ml-2 hidden justify-start gap-2 sm:flex">

@@ -38,7 +38,7 @@ const Versions: React.FC = () => {
 
   return (
     <React.Fragment>
-      <div className="mb-8 flex w-full items-center justify-center md:mb-0 md:justify-end">
+      <div className="mb-4 flex w-full items-center justify-center md:mb-0 md:justify-end">
         {isFetching || !data ? (
           <LoadingPage />
         ) : (

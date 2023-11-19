@@ -17,11 +17,11 @@ const IprBible: React.FC = () => {
 
       <Divider
         orientation="vertical"
-        className="border-6 mx-4 hidden h-full md:block"
+        className="border-6 mx-4 hidden h-full md:my-4 md:block"
       />
 
       {/* Versos */}
-      <div className="w-full grow-0 overflow-y-auto p-2 md:h-screen md:grow">
+      <div className="w-full grow-0 overflow-y-auto px-1 md:h-screen md:grow md:px-4">
         <Versions />
 
         <ReadableVerses />

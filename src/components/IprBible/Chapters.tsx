@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Link } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import React, { useCallback } from 'react';
 
 import useFetchBookDetail from '@/queries/book-detail';
@@ -87,8 +87,11 @@ const Chapters: React.FC = () => {
                 </div>
                 <div className="flex w-full gap-2">
                   Versão:{' '}
-                  <span className="font-semibold text-primary">
+                  <span className="hidden font-semibold text-primary md:block">
                     {versions[selectedVersionStore!]}
+                  </span>
+                  <span className="block font-semibold text-primary md:hidden">
+                    {selectedVersionStore?.toUpperCase()}
                   </span>
                 </div>
                 <span className="mt-4 text-xl font-bold">Capítulos</span>
@@ -123,16 +126,6 @@ const Chapters: React.FC = () => {
           </div>
         )}
       </div>
-
-      <Link
-        isExternal
-        className="mb-1 flex items-center justify-center gap-1 text-current"
-        href="https://www.igrejapentecostalreformada.com.br/"
-        title="link site ipr"
-      >
-        <span className="text-default-600">Conheça mais sobre a </span>
-        <p className="text-primary">IPR</p>
-      </Link>
     </div>
   );
 };

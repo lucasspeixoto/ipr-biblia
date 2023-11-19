@@ -22,7 +22,7 @@ arguments: a store configuration function and an optional configuration object. 
 const useSelectedVersion = create(
   persist<SelectedVersionStore>(
     (set) => ({
-      version: 'acf',
+      version: 'nvi',
       setSelectedVersion: (version: string) => {
         set((state) => ({
           ...state,
