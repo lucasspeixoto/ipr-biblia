@@ -21,10 +21,10 @@ type SelectedVersionStore = {
 arguments: a store configuration function and an optional configuration object. */
 const useSelectedVersion = create(
   persist<SelectedVersionStore>(
-    (set) => ({
+    set => ({
       version: 'nvi',
       setSelectedVersion: (version: string) => {
-        set((state) => ({
+        set(state => ({
           ...state,
           version,
         }));
@@ -32,8 +32,8 @@ const useSelectedVersion = create(
     }),
     {
       name: 'selected-version-storage', // name of the item in the storage (must be unique)
-    },
-  ),
+    }
+  )
 );
 
 export default useSelectedVersion;

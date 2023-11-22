@@ -3,11 +3,11 @@ import '@/styles/globals.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 
-import Navbar from '@/components/Navbar';
+import { Navbar } from '@/components/Navbar';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
-import { NextUIProviders } from '@/providers/next-ui';
-import ReactQueryProviders from '@/providers/react-query';
+import { NextUIProviders } from '@/providers/NextUIProviders';
+import ReactQueryProviders from '@/providers/ReactQueryProviders';
 
 export const metadata: Metadata = {
   title: {
@@ -31,13 +31,11 @@ export default function RootLayout({
       <body
         className={clsx(
           'min-h-screen overflow-auto bg-background font-sans antialiased scrollbar-hide',
-          fontSans.variable,
-        )}
-      >
+          fontSans.variable
+        )}>
         <ReactQueryProviders>
           <NextUIProviders
-            themeProps={{ attribute: 'class', defaultTheme: 'dark' }}
-          >
+            themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
             <div className="relative flex flex-col">
               <Navbar />
 

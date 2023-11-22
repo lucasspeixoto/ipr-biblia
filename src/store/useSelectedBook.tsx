@@ -30,24 +30,24 @@ library. Zustand is a state management library for React that provides a simple
 API to manage state in a functional way. */
 const useSelectedBook = create(
   persist<SelectedBookStore>(
-    (set) => ({
+    set => ({
       bookAbbrev: 'gn',
       setSelectedBookAbbrev: (bookAbbrev: string) => {
-        set((state) => ({
+        set(state => ({
           ...state,
           bookAbbrev,
         }));
       },
       verse: 1,
       setSelectedVerse: (verse: number) => {
-        set((state) => ({
+        set(state => ({
           ...state,
           verse,
         }));
       },
       chapters: 1,
       setChaptersNumber: (chapters: number) => {
-        set((state) => ({
+        set(state => ({
           ...state,
           chapters,
         }));
@@ -55,8 +55,8 @@ const useSelectedBook = create(
     }),
     {
       name: 'selected-book-storage', // name of the item in the storage (must be unique)
-    },
-  ),
+    }
+  )
 );
 
 export default useSelectedBook;

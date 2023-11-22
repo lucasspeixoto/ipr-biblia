@@ -7,18 +7,18 @@ import useFetchVersesByBook from '@/queries/verses';
 import useSelectedBook from '@/store/useSelectedBook';
 import useSelectedVersion from '@/store/useSelectedVersion';
 
-import LoadingPage from '../LoadingPage';
+import { LoadingPage } from '../LoadingPage';
 
 const ReadableVerses: React.FC = () => {
-  const selectedBookAbbrev = useSelectedBook((state) => state.bookAbbrev);
+  const selectedBookAbbrev = useSelectedBook(state => state.bookAbbrev);
 
-  const selectedChaptersStore = useSelectedBook((state) => state.chapters);
+  const selectedChaptersStore = useSelectedBook(state => state.chapters);
 
-  const selectedVerseStore = useSelectedBook((state) => state.verse);
+  const selectedVerseStore = useSelectedBook(state => state.verse);
 
-  const selectedVersionStore = useSelectedVersion((state) => state.version);
+  const selectedVersionStore = useSelectedVersion(state => state.version);
 
-  const setSelectedVerse = useSelectedBook((state) => state.setSelectedVerse);
+  const setSelectedVerse = useSelectedBook(state => state.setSelectedVerse);
 
   /* The `const setSelectedVerseHandle` is a callback function that is created
   using the `useCallback` hook. It takes a `verse` parameter of type number and
@@ -31,7 +31,7 @@ const ReadableVerses: React.FC = () => {
   const { data, isFetching, refetch } = useFetchVersesByBook(
     selectedVersionStore,
     selectedBookAbbrev,
-    selectedVerseStore,
+    selectedVerseStore
   );
 
   const [isClient, setIsClient] = React.useState(false);
@@ -69,7 +69,7 @@ const ReadableVerses: React.FC = () => {
             </span>
 
             <div className="mx-0 mt-6 flex flex-col items-center justify-center gap-4 md:mx-4">
-              {data?.verses.map((verse) => (
+              {data?.verses.map(verse => (
                 <p className="text-center" key={verse.number}>
                   <span className="mr-2 font-bold italic text-primary">
                     {verse.number}.

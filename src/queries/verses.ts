@@ -13,12 +13,12 @@ import type { VerseByBookResponse } from '@/types/verse-by-book-response';
  * @returns a Promise that resolves to a VerseByBookResponse object.
  */
 const getVersesByBook = async (
-  ctx: QueryFunctionContext,
+  ctx: QueryFunctionContext
 ): Promise<VerseByBookResponse> => {
   const [, version, bookAbbrev, verse] = ctx.queryKey;
 
   const { data } = await api.get<VerseByBookResponse>(
-    `/api/verses/${version}/${bookAbbrev}/${verse}`,
+    `/api/verses/${version}/${bookAbbrev}/${verse}`
   );
 
   return data;
@@ -37,7 +37,7 @@ const getVersesByBook = async (
 export default function useFetchVersesByBook(
   version: string | null,
   bookAbbrev: string | null,
-  verse: number | null,
+  verse: number | null
 ) {
   return useQuery({
     queryKey: ['api/verses', version, bookAbbrev, verse],

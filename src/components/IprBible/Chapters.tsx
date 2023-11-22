@@ -9,21 +9,19 @@ import useSelectedVersion from '@/store/useSelectedVersion';
 import { versions } from '@/utils/versions';
 
 const Chapters: React.FC = () => {
-  const selectedVerseStore = useSelectedBook((state) => state.verse);
+  const selectedVerseStore = useSelectedBook(state => state.verse);
 
-  const selectedBookAbbrevStore = useSelectedBook((state) => state.bookAbbrev);
+  const selectedBookAbbrevStore = useSelectedBook(state => state.bookAbbrev);
 
-  const selectedVersionStore = useSelectedVersion((state) => state.version);
+  const selectedVersionStore = useSelectedVersion(state => state.version);
 
   const { data, isFetching, refetch } = useFetchBookDetail(
-    selectedBookAbbrevStore,
+    selectedBookAbbrevStore
   );
 
-  const setSelectedVerse = useSelectedBook((state) => state.setSelectedVerse);
+  const setSelectedVerse = useSelectedBook(state => state.setSelectedVerse);
 
-  const setChaptersNumbers = useSelectedBook(
-    (state) => state.setChaptersNumber,
-  );
+  const setChaptersNumbers = useSelectedBook(state => state.setChaptersNumber);
 
   /* The `const setSelectedVerseHandle` is a callback function that is created
   using the `useCallback` hook. It takes a `verse` parameter of type number and
@@ -100,8 +98,8 @@ const Chapters: React.FC = () => {
                     {React.Children.toArray(
                       Array.from(
                         { length: data.chapters },
-                        (_, index) => index + 1,
-                      ).map((chapter) => (
+                        (_, index) => index + 1
+                      ).map(chapter => (
                         <Button
                           isIconOnly
                           color="primary"
@@ -113,11 +111,10 @@ const Chapters: React.FC = () => {
                               ? 'font-bold opacity-100'
                               : 'opacity-60 hover:font-bold hover:opacity-100'
                           }
-                          onClick={() => setSelectedVerseHandle(chapter)}
-                        >
+                          onClick={() => setSelectedVerseHandle(chapter)}>
                           {chapter}
                         </Button>
-                      )),
+                      ))
                     )}
                   </div>
                 </div>
