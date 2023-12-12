@@ -76,18 +76,9 @@ export const Navbar = () => {
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {React.Children.toArray(
-            siteConfig.navMenuItems.map((item, index) => (
+            siteConfig.navMenuItems.map(item => (
               <NavbarMenuItem>
-                <Link
-                  color={
-                    index === 2
-                      ? 'primary'
-                      : index === siteConfig.navMenuItems.length - 1
-                      ? 'danger'
-                      : 'foreground'
-                  }
-                  href={item.href}
-                  size="lg">
+                <Link color={'primary'} href={item.href} size="lg">
                   {item.label}
                 </Link>
               </NavbarMenuItem>
