@@ -28,7 +28,7 @@
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.16",
     "intl-messageformat": "^10.5.0",
-    "next": "^14.0.3",
+    "next": "^14.0.4",
     "next-themes": "^0.2.1",
     "postcss": "8.4.29",
     "react": "^18.2.0",
@@ -37,12 +37,14 @@
     "tailwind-variants": "^0.1.13",
     "tailwindcss": "3.3.3",
     "typescript": "5.0.4",
-    "zustand": "^4.4.4"
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
+    "@types/jest": "^29.5.11",
+    "@types/mocha": "^10.0.6",
     "@types/node": "20.8.9",
     "@types/react": "^18.2.28",
     "@types/react-dom": "^18.2.13",

@@ -9,7 +9,11 @@ export default function TematicsPage() {
         width={300}
         height={200}
       />
-      <div className="my-4 text-xl text-black dark:text-white">Em breve</div>
+      <h1
+        test-id="page-title"
+        className="my-4 text-xl text-black dark:text-white">
+        Em breve
+      </h1>
     </>
   );
 }
